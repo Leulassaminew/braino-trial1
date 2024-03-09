@@ -38,10 +38,9 @@ async def handler(job):
     if similarity_scores[0][most_similar_index] >= 0.3:
         for sent in top_sentences:
             res = df[df["Question"] == sent]["Answer"].values[0]
-            answer += res
+            answer = answer+"\n"+"Question:"+"\n"+sent
+            answer = answer+"\n"+"Answer:"+"\n"+res
             # txt+=res
-            answer = answer.replace("•", " ")
-            answer = answer.replace("\n", "")
     else:
         answer = ''    
     j["context"]=answer
