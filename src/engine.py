@@ -68,6 +68,7 @@ class vLLMEngine:
         Your answers should always be in Romanian's context because you will be assisting Romanian sales agents
         """
         ans="""Use this context to answer the question. Your answer should be based on this context do not add that much general information.
+        always use everything relevant to the question from the context 
         Answer only based on this context below do not add more than 2 sentences out of the context 
         ### Context:"""
         if len(context)>5:
