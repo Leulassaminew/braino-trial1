@@ -31,11 +31,11 @@ async def handler(job):
     text_vector = vectorizer.transform([text])
     similarity_scores = cosine_similarity(text_vector, sentence_vectors)
     most_similar_index = similarity_scores.argmax()
-    top_indices = similarity_scores.argsort()[0][-2:]
+    top_indices = similarity_scores.argsort()[0][-3:]
     top=top_indices[::-1]
     top_sentences = sentences[top]
     answer = ''
-    if similarity_scores[0][most_similar_index] >= 0.4:
+    if similarity_scores[0][most_similar_index] >= 0.3:
         for sent in top_sentences:
             res = df[df["Question"] == sent]["Answer"].values[0]
             answer += res
