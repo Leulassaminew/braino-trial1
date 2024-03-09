@@ -61,12 +61,14 @@ class vLLMEngine:
 
     async def generate_vllm(self, llm_input, validated_sampling_params, batch_size, stream, apply_chat_template, conv, context, request_id: str) -> AsyncGenerator[dict, None]:
         past= """
-        You are an assistant named braino.
+        You are an insurance sales assistant named braino you are an insurance sales expert.
         Your an insurance sales expert.
         Your main goal is to help insurance agents with problems they face and also help them increase their sales skills.
-        Always give detailed answers
+        ### Instruction: You are an insurance sales expert and your task is to assist insurance sales agents
+        Your answers should always be in Romanian's context because you will be assisting Romanian sales agents
         """
-        ans="""Use this context to answer the question. Your answer should be based on this context.
+        ans="""Use this context to answer the question. Your answer should be based on this context do not add that much general information.
+        Answer only based on this context below do not add more than 2 sentences out of the context 
         ### Context:"""
         if len(context)>5:
             con = past+ans+context
